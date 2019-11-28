@@ -41,4 +41,22 @@ public class JdbcController {
     public Student queryStudentBySno(String sno) {
         return studentServiceImp.queryStudentBySno(sno);
     }
+
+    /**
+     * 使用jdbcTemplate.queryForList(sql)查询
+     * @return List<Map<String, Object>>类型
+     */
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
+    public List<Map<String, Object>> queryStudentsListMap() {
+        return studentServiceImp.queryStudents();
+    }
+
+    /**
+     * 使用jdbcTemplate.query(sql, ...)查询
+     * @return List<Student>类型
+     */
+    @RequestMapping(value = "/students/1", method = RequestMethod.GET)
+    public List<Student> queryStudentsListMap1() {
+        return studentServiceImp.queryStudents1();
+    }
 }

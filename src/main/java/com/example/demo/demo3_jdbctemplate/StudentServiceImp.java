@@ -2,12 +2,16 @@ package com.example.demo.demo3_jdbctemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @Service("studentService1")
-public class StudentServiceImp implements StudentService{
+public class StudentServiceImp implements StudentService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -39,4 +43,23 @@ public class StudentServiceImp implements StudentService{
         }
         return null;
     }
+
+    @Override
+    public List<Map<String, Object>> queryStudents() {
+        String sql = "SELECT * FROM student";
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    @Override
+    public List<Student> queryStudents1() {
+        String sql = "SELECT * FROM student";
+        return jdbcTemplate.query(sql, (ResultSet rs, int i) -> {
+            Student student = new Student();
+            student.setSno(rs.getString("sno"));
+            student.setName(rs.getString("sname"));
+            student.setSex(rs.getString("ssex"));
+            return student;
+        });
+    }
+
 }
