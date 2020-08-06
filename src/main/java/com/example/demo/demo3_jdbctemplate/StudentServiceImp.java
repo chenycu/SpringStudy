@@ -62,4 +62,9 @@ public class StudentServiceImp implements StudentService {
         });
     }
 
+    public int test() {
+        System.out.println("执行了 test方法");
+        return 10;
+    }
+
 }

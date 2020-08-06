@@ -15,4 +15,5 @@ public interface StudentService {
     List<Map<String, Object>> queryStudents();
 
     List<Student> queryStudents1();
+    int test();
 }
