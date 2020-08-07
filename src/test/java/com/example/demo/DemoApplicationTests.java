@@ -1,18 +1,14 @@
 package com.example.demo;
 
 import com.example.demo.demo3_jdbctemplate.StudentService;
-import com.example.demo.demo3_jdbctemplate.StudentServiceImp;
-import com.example.demo.demo4_configuration.ConfigBean1;
-import com.example.demo.demo4_configuration.ScanBean1;
+import com.example.demo.demo5_circle_dependes.ScanConfig;
+import com.example.demo.demo5_circle_dependes.ServiceA;
+import com.example.demo.demo5_circle_dependes.ServiceB;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import javax.xml.ws.Service;
-import java.util.Arrays;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -25,8 +21,13 @@ class DemoApplicationTests {
 
     @Test
     public void test2() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ScanBean1.class);
-
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ScanConfig.class);
+//        ServiceA serviceA = new ServiceA();
+//        ServiceB serviceB = new ServiceB();
+//        serviceA.setServiceB(serviceB);
+//        serviceB.setServiceA(serviceA);
+        ServiceA serviceA = new ServiceA();
+        ServiceB serviceB = new ServiceB();
     }
 
     @Test
