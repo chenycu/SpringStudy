@@ -38,4 +38,10 @@ class DemoApplicationTests {
         SimpleBean bean1 = context.getBean("simpleBean", SimpleBean.class);
         context.close();
     }
+
+    @Test
+    public void test3() {
+        String a = "bbg";
+        System.out.println(a instanceof Object);
+    }
 }
