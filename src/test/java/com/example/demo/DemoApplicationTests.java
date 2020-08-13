@@ -1,9 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.demo3_jdbctemplate.StudentService;
-import com.example.demo.demo5_circle_dependes.ScanConfig;
-import com.example.demo.demo5_circle_dependes.ServiceA;
-import com.example.demo.demo5_circle_dependes.ServiceB;
+import com.example.demo.demo4_configuration.ScanBean1;
 import com.example.demo.demo6_aop.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.ClassFilter;
@@ -25,18 +23,18 @@ class DemoApplicationTests {
     @Test
     void contextLoads() {
     }
+
     @Autowired
     StudentService studentService;
 
     @Test
     public void test2() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ScanConfig.class);
-//        ServiceA serviceA = new ServiceA();
-//        ServiceB serviceB = new ServiceB();
-//        serviceA.setServiceB(serviceB);
-//        serviceB.setServiceA(serviceA);
-        ServiceA serviceA = new ServiceA();
-        ServiceB serviceB = new ServiceB();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ScanBean1.class);
+        for (String beanName : context.getBeanDefinitionNames()) {
+            System.out.println(beanName + "->" + context.getBean(beanName));
+        }
+
+        System.out.println(context.getBeanDefinition("serviceA").getScope());
     }
 
     @Test
