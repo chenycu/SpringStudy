@@ -4,8 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-//@Configuration
-@Component
+@Configuration
 public class ConfigBean1 {
     @Bean
     public ServiceA serviceA() {
